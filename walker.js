@@ -114,7 +114,7 @@ function walker() {
 		FunctionDeclaration: function () {
 			return {
 				type: this.type,
-				id: this.id,
+				id: this.id ? walk(this.id) : null,
 				params: map(walk, this.params),
 				body: walk(this.body)
 			};
@@ -122,7 +122,7 @@ function walker() {
 		FunctionExpression: function () {
 			return {
 				type: this.type,
-				id: this.id,
+				id: this.id ? walk(this.id) : null,
 				params: map(walk, this.params),
 				body: walk(this.body)
 			};
@@ -266,7 +266,11 @@ function walker() {
 			};
 		},
 		VariableDeclarator: function () {
-			return this;
+			return {
+				type: this.type,
+				id: walk(this.id),
+				init: this.init ? walk(this.init) : null
+			};
 		},
 		WhileStatement: function () {
 			return {

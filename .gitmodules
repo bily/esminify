@@ -1,0 +1,6 @@
+[submodule "external/escodegen"]
+	path = external/escodegen
+	url = git://github.com/Constellation/escodegen.git
+[submodule "external/esprima"]
+	path = external/esprima
+	url = git://github.com/ariya/esprima.git
