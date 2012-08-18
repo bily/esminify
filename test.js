@@ -10,20 +10,24 @@ fs.readFile('./basis.js', function (err, data) {
 		throw err;
 	}
 
-	var tree = esprima.parse(data, {
-		loc: true
-	});
+	try {
+		var tree = esprima.parse(data);
 
-	tree = optimise(tree);
+		tree = optimise(tree);
 
-	console.log(codegen.generate(tree, {
-		format: {
-			compact: true,
-			quotes: 'auto',
-			semicolons: false,
-			renumber: true,
-			parentheses: false,
-			escapeless: true
-		}
-	}));
+		console.log(codegen.generate(tree, {
+			format: {
+				compact: true,
+				quotes: 'auto',
+				semicolons: false,
+				renumber: true,
+				parentheses: false,
+				escapeless: true
+			}
+		}));
+	} catch (e) {
+		console.log(e.message);
+	}
+
+
 });
