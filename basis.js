@@ -1,1 +1,10 @@
-alert(5 + 5);
+(function(){
+var kaas = 'saak';
+kaas = 5;
+
+if (true) {
+	alert(kaas);
+} else {
+	alert(saak);
+	}
+}());

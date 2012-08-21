@@ -28,6 +28,4 @@ fs.readFile('./basis.js', function (err, data) {
 	} catch (e) {
 		console.log(e.message);
 	}
-
-
 });
